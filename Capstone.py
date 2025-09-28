@@ -85,37 +85,21 @@ with tab1:
 
         if design_type == "Choose from Templates":
             st.write("Choose a template:")
+            template_choice = st.radio("Select Template", ["White Shirt", "Black Shirt", "Blue Shirt"], horizontal=True)
 
             col1, col2, col3 = st.columns(3)
             with col1:
                 st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-White-Small-Size_3cc03e24-2c97-4eaf-b99a-99eea6bb9221.1604d1a89fc6a8669bdb1896f8dd8da3.jpeg", caption="White Shirt", use_container_width=True)
-                white_selected = st.button("White Shirt", key="white_btn", use_container_width=True)
             with col2:
                 st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-Tweed-Small-Size_c5a4f611-2789-4081-8901-e15983d6ac9d.129328f6e3d2ab4c61120daccd4599ed.jpeg", caption="Black Shirt", use_container_width=True)
-                black_selected = st.button("Black Shirt", key="black_btn", use_container_width=True)
             with col3:
                 st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-Neon-Blue-Small-Size_114ac5d7-632b-4975-9006-f341620eedb7.fdff6c7b97b5c4fcea877b9ce35c1598.jpeg", caption="Blue Shirt", use_container_width=True)
-                blue_selected = st.button("Blue Shirt", key="blue_btn", use_container_width=True)
-
-            # Set template choice based on button clicks
-            if 'template_choice' not in st.session_state:
-                st.session_state.template_choice = "White Shirt"
-            
-            if white_selected:
-                st.session_state.template_choice = "White Shirt"
-            elif black_selected:
-                st.session_state.template_choice = "Black Shirt"
-            elif blue_selected:
-                st.session_state.template_choice = "Blue Shirt"
-            
-            template_choice = st.session_state.template_choice
-            st.write(f"Selected: **{template_choice}**")
-     
+ 
             qty_col, size_col = st.columns(2)
             with qty_col:
-            quantity = st.number_input("Number of Shirts", min_value=1, value=1, key="template_qty")
+                quantity = st.number_input("Number of Shirts", min_value=1, value=1, key="template_qty")
             with size_col:
-            shirt_size = st.selectbox("Shirt Size", ["XS", "S", "M", "L", "XL", "XXL"], key="template_size")
+                shirt_size = st.selectbox("Shirt Size", ["XS", "S", "M", "L", "XL", "XXL"], key="template_size")
             design_name = template_choice
         else:
             uploaded_file = st.file_uploader("Upload your design", type=['png', 'jpg', 'jpeg'])
