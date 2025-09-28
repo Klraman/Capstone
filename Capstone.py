@@ -63,7 +63,7 @@ misc = 20
 tab1, tab2 = st.tabs(["Customer Dashboard", "Vendor Dashboard"])
 
 with tab1:
-    st.title("Place Your Order")
+    st.title("Place Your Ofwafwarder")
     
     if 'cart' not in st.session_state:
         st.session_state.cart = []
