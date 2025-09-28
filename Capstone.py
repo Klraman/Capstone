@@ -69,9 +69,9 @@ with tab1:
         st.session_state.cart = []
     
     st.subheader("Add Items to Cart")
-    
-    design_type = st.radio("Design Type", ["Upload Custom Design", "Choose from Templates"])
-        
+
+    design_type = st.radio("Design Type", ["Choose from Templates", "Upload Custom Design"])
+
     if design_type == "Choose from Templates":
         st.write("Choose a template:")
         template_choice = st.radio("Select Template", ["White Shirt", "Black Shirt", "Blue Shirt"], horizontal=True)
