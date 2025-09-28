@@ -72,12 +72,7 @@ with tab1:
     
     design_type = st.radio("Design Type", ["Upload Custom Design", "Choose from Templates"])
         
-    if design_type == "Upload Custom Design":
-        uploaded_file = st.file_uploader("Upload your design", type=['png', 'jpg', 'jpeg'])
-        quantity = st.number_input("Number of Shirts", min_value=1, value=1, key="custom_qty")
-        shirt_size = st.selectbox("Shirt Size", ["XS", "S", "M", "L", "XL", "XXL"], key="custom_size")
-        design_name = st.text_input("Design Name (optional)", key="custom_name")
-    else:
+    if design_type == "Choose from Templates":
         st.write("Choose a template:")
         template_choice = st.radio("Select Template", ["White Shirt", "Black Shirt", "Blue Shirt"], horizontal=True)
 
@@ -92,6 +87,11 @@ with tab1:
         quantity = st.number_input("Number of Shirts", min_value=1, value=1, key="template_qty")
         shirt_size = st.selectbox("Shirt Size", ["XS", "S", "M", "L", "XL", "XXL"], key="template_size")
         design_name = template_choice
+    else:
+        uploaded_file = st.file_uploader("Upload your design", type=['png', 'jpg', 'jpeg'])
+        quantity = st.number_input("Number of Shirts", min_value=1, value=1, key="custom_qty")
+        shirt_size = st.selectbox("Shirt Size", ["XS", "S", "M", "L", "XL", "XXL"], key="custom_size")
+        design_name = st.text_input("Design Name (optional)", key="custom_name")
         
     if st.button("Add to Cart"):
         item = {
