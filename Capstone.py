@@ -152,60 +152,57 @@ with tab1:
         else:
             st.info("Your cart is empty. Add some items!")
 
-    # Customer information section - full width
-    if st.session_state.cart:
-        st.subheader("Customer Information")
-        col1, col2 = st.columns(2)
-        with col1:
+        # Customer information section - moved to right column
+        if st.session_state.cart:
+            st.subheader("Customer Information")
             name = st.text_input("Full Name")
             email = st.text_input("Email Address")
-        with col2:
             phone = st.text_input("Phone Number")
             address = st.text_area("Shipping Address")
-        
-        checkout_col1, checkout_col2 = st.columns(2)
-        with checkout_col1:
-            if st.button("Clear Cart", use_container_width=True):
-                st.session_state.cart = []
-                st.rerun()
-        
-        with checkout_col2:
-            if st.button("Checkout", type="primary", use_container_width=True):
-                if name and email and phone:
-                    order_id = f"ORD{str(uuid.uuid4())[:3].upper()}{len(st.session_state.orders) + 1:03d}"
-                    
-                    new_order = {
-                        "order_id": order_id,
-                        "customer": name,
-                        "email": email,
-                        "phone": phone,
-                        "items": [
-                            {
-                                "design_name": item['design_name'],
-                                "quantity": item['quantity'],
-                                "size": item['size'],
-                                "price": item['total_price']
-                            }
-                            for item in st.session_state.cart
-                        ],
-                        "total": sum(item['total_price'] for item in st.session_state.cart),
-                        "status": "Pending",
-                        "date": datetime.now().strftime("%Y-%m-%d")
-                    }
-                    
-                    st.session_state.orders.append(new_order)
-                    
-                    st.success(f"Order {order_id} placed successfully for {name}!")
-                    st.info("You will receive a confirmation email shortly. Your order will appear in the vendor dashboard.")
-                    st.write("**Order Details:**")
-                    for item in st.session_state.cart:
-                        st.write(f"- {item['design_name']}: {item['quantity']} × {item['size']} = ₱{item['total_price']}")
-                    st.write(f"**Total: ₱{sum(item['total_price'] for item in st.session_state.cart)}**")
-                    st.write(f"**Order ID: {order_id}**")
-                    
+            
+            checkout_col1, checkout_col2 = st.columns(2)
+            with checkout_col1:
+                if st.button("Clear Cart", use_container_width=True):
                     st.session_state.cart = []
-                else:
-                    st.error("Please fill in all customer information fields.")
+                    st.rerun()
+            
+            with checkout_col2:
+                if st.button("Checkout", type="primary", use_container_width=True):
+                    if name and email and phone:
+                        order_id = f"ORD{str(uuid.uuid4())[:3].upper()}{len(st.session_state.orders) + 1:03d}"
+                        
+                        new_order = {
+                            "order_id": order_id,
+                            "customer": name,
+                            "email": email,
+                            "phone": phone,
+                            "items": [
+                                {
+                                    "design_name": item['design_name'],
+                                    "quantity": item['quantity'],
+                                    "size": item['size'],
+                                    "price": item['total_price']
+                                }
+                                for item in st.session_state.cart
+                            ],
+                            "total": sum(item['total_price'] for item in st.session_state.cart),
+                            "status": "Pending",
+                            "date": datetime.now().strftime("%Y-%m-%d")
+                        }
+                        
+                        st.session_state.orders.append(new_order)
+                        
+                        st.success(f"Order {order_id} placed successfully for {name}!")
+                        st.info("You will receive a confirmation email shortly. Your order will appear in the vendor dashboard.")
+                        st.write("**Order Details:**")
+                        for item in st.session_state.cart:
+                            st.write(f"- {item['design_name']}: {item['quantity']} × {item['size']} = ₱{item['total_price']}")
+                        st.write(f"**Total: ₱{sum(item['total_price'] for item in st.session_state.cart)}**")
+                        st.write(f"**Order ID: {order_id}**")
+                        
+                        st.session_state.cart = []
+                    else:
+                        st.error("Please fill in all customer information fields.")
 
 with tab2:
     st.title("Vendor Dashboard")
