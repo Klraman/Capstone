@@ -76,7 +76,7 @@ with tab1:
     if 'cart' not in st.session_state:
         st.session_state.cart = []
     
-    left_col, right_col = st.columns([2, 1])
+    left_col, right_col = st.columns([2, 1], border=True)
     
     with left_col:
         st.subheader("Add Items to Cart")
