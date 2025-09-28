@@ -81,7 +81,7 @@ with tab1:
     with left_col:
         st.subheader("Add Items to Cart")
 
-        design_type = st.radio("Design Type", ["Choose from Templates", "Upload Custom Design"], border=True, horizontal=True)
+        design_type = st.radio("Design Type", ["Choose from Templates", "Upload Custom Design"])
 
         if design_type == "Choose from Templates":
             st.write("Choose a template:")
