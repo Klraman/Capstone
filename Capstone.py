@@ -91,11 +91,11 @@ with tab1:
             # Make images larger and use full width
             col1, col2, col3 = st.columns(3)
             with col1:
-                st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-White-Small-Size_3cc03e24-2c97-4eaf-b99a-99eea6bb9221.1604d1a89fc6a8669bdb1896f8dd8da3.jpeg", caption="White Shirt", use_container_width=True)
+                st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-White-Small-Size_3cc03e24-2c97-4eaf-b99a-99eea6bb9221.1604d1a89fc6a8669bdb1896f8dd8da3.jpeg", caption="White Shirt", use_container_width=True, width=None)
             with col2:
-                st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-Tweed-Small-Size_c5a4f611-2789-4081-8901-e15983d6ac9d.129328f6e3d2ab4c61120daccd4599ed.jpeg", caption="Black Shirt", use_container_width=True)
+                st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-Tweed-Small-Size_c5a4f611-2789-4081-8901-e15983d6ac9d.129328f6e3d2ab4c61120daccd4599ed.jpeg", caption="Black Shirt", use_container_width=True, width=None)
             with col3:
-                st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-Neon-Blue-Small-Size_114ac5d7-632b-4975-9006-f341620eedb7.fdff6c7b97b5c4fcea877b9ce35c1598.jpeg", caption="Blue Shirt", use_container_width=True)
+                st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-Neon-Blue-Small-Size_114ac5d7-632b-4975-9006-f341620eedb7.fdff6c7b97b5c4fcea877b9ce35c1598.jpeg", caption="Blue Shirt", use_container_width=True, width=None)
 
             # Use columns for form inputs
             qty_col, size_col = st.columns(2)
