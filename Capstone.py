@@ -76,7 +76,6 @@ with tab1:
     if 'cart' not in st.session_state:
         st.session_state.cart = []
     
-    # Create main columns for better space utilization
     left_col, right_col = st.columns([2, 1])
     
     with left_col:
@@ -88,7 +87,6 @@ with tab1:
             st.write("Choose a template:")
             template_choice = st.radio("Select Template", ["White Shirt", "Black Shirt", "Blue Shirt"], horizontal=True)
 
-            # Make images larger and use full width
             col1, col2, col3 = st.columns(3)
             with col1:
                 st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-White-Small-Size_3cc03e24-2c97-4eaf-b99a-99eea6bb9221.1604d1a89fc6a8669bdb1896f8dd8da3.jpeg", caption="White Shirt", use_container_width=True)
@@ -96,8 +94,7 @@ with tab1:
                 st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-Tweed-Small-Size_c5a4f611-2789-4081-8901-e15983d6ac9d.129328f6e3d2ab4c61120daccd4599ed.jpeg", caption="Black Shirt", use_container_width=True)
             with col3:
                 st.image("https://i5.walmartimages.com/seo/Men-Heavy-Cotton-Multi-Colors-T-Shirt-Color-Neon-Blue-Small-Size_114ac5d7-632b-4975-9006-f341620eedb7.fdff6c7b97b5c4fcea877b9ce35c1598.jpeg", caption="Blue Shirt", use_container_width=True)
-
-            # Use columns for form inputs
+ 
             qty_col, size_col = st.columns(2)
             with qty_col:
                 quantity = st.number_input("Number of Shirts", min_value=1, value=1, key="template_qty")
@@ -126,6 +123,8 @@ with tab1:
             st.success("Item added to cart!")
             st.rerun()
     
+    st.markdown("---")
+    
     with right_col:
         if st.session_state.cart:
             st.subheader("Shopping Cart")
@@ -152,7 +151,6 @@ with tab1:
         else:
             st.info("Your cart is empty. Add some items!")
 
-        # Customer information section - moved to right column
         if st.session_state.cart:
             st.subheader("Customer Information")
             name = st.text_input("Full Name")
